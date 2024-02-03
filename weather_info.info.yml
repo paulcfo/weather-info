@@ -1,0 +1,7 @@
+name: 'Weather Info'
+type: module
+description: 'Weather API project'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+  - drupal:system (>=9.0)
