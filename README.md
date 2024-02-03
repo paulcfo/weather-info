@@ -1,30 +1,35 @@
-## INTRODUCTION
+## BRIEF
 
-The Weather Info module is a DESCRIBE_THE_MODULE_HERE.
+The expectation is that the weather information is available on a page `/weather-info`. 
+This module fetches and displays weather information from an external API (like OpenWeatherMap) on that webpage.
 
-The primary use case for this module is:
+The user would need to enter the `city` and `API KEY` as configuration elements into a form here: `admin/config/services/weather-info`.
 
-- Use case #1
-- Use case #2
-- Use case #3
+## HINT
 
-## REQUIREMENTS
+1. **Module Structure Creation**
+   - Create a new module folder in `/modules/custom/` named `weather_info`.
+   - Within this folder, create the following files:
+     - `weather_info.info.yml` (module metadata)
+     - `weather_info.module` (main module file, theme registration)
+     - `src/Controller/WeatherInfoController.php` (handles data fetching and display logic)
+     - `src/Form/WeatherInfoConfigForm.php` (configuration form for API key and city)
+     - `weather_info.routing.yml` (defines routes)
+     - `templates/weather-info.html.twig` (Twig template for displaying weather data)
+     - `weather_info.links.menu.yml` (allows the config form to appear on the `/admin/config` page)
 
-DESCRIBE_MODULE_DEPENDENCIES_HERE
+2. **Implement API Integration in Controller (`WeatherInfoController.php`)**
+   - Create a controller class to handle API requests to the weather service.
+   - Use Drupal's Http Client service for API calls i.e. `GuzzleHttp\ClientInterface`
+   - Process the API response and prepare it for display.
 
-## INSTALLATION
+3. **Create Configuration Form (`WeatherInfoConfigForm.php`)**
+   - Develop a form for the site admin to enter the API key and city.
+   - Implement form validation and submission to save configurations.
 
-Install as you would normally install a contributed Drupal module.
-See: https://www.drupal.org/node/895232 for further information.
+4. **Routing and Menu Link Setup (`weather_info.routing.yml`)**
+   - Define a route for displaying weather data and for the configuration form.
+   - Create a `weather_info.links.menu.yml` for a menu link to the configuration form.
 
-## CONFIGURATION
-- Configuration step #1
-- Configuration step #2
-- Configuration step #3
-
-## MAINTAINERS
-
-Current maintainers for Drupal 10:
-
-- FIRST_NAME LAST_NAME (NICKNAME) - https://www.drupal.org/u/NICKNAME
-
+5. **Create Twig Template (`weather-info.html.twig`)**
+   - Design a simple Twig template for displaying the fetched weather data on the website.
